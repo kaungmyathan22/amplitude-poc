@@ -1,17 +1,14 @@
 "use client";
-
 import useAmplitudeContext from "@/hooks/useAmplitudeContext";
-import { setUserId } from "@amplitude/analytics-browser";
 import { useEffect } from "react";
 
-export default function Home() {
+const ContactPage = () => {
   const { trackAmplitudeEvent } = useAmplitudeContext();
   useEffect(() => {
-    setUserId("xzer1");
     trackAmplitudeEvent("Page Viewed", {
-      page: "home",
-      "Page Location": "home_page",
-      "Page Title": "Home Page",
+      page: "contact",
+      "Page Location": "contact_page",
+      "Page Title": "Contact Page",
       "Page URL": window.location.href,
       "Page Path": window.location.pathname,
       "Page Domain": window.location.hostname,
@@ -22,19 +19,21 @@ export default function Home() {
 
   return (
     <div>
-      <p>home page </p>
+      <p>ContactPage</p>
       <button
         onClick={() => {
           trackAmplitudeEvent("click", {
-            description: "Home page button clicked",
+            description: "About page button clicked",
             timestamp: new Date().toISOString(),
-            page: "home",
-            button: "home_page_button",
+            page: "contact",
+            button: "contact_page_button",
           });
         }}
       >
-        Home page button
+        Contact page button
       </button>
     </div>
   );
-}
+};
+
+export default ContactPage;
